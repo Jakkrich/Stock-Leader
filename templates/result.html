@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+
+{%block body%}
+
+<div class="container-fluid">
+
+  <div class="jumbotron">
+	<h2 style="text-align:center"><b>Results</b></h2>
+  </div>
+    <div class="row" style=" margin-top:50px">
+    
+       <div class="col-sm-3">
+       
+       <div style="text-align:center; color:blue; font-size:25px;">
+           Predicted Prices
+          </div>
+           <div style="height:400px; overflow-y:auto; margin-top:10px">
+           
+           <div  style="text-align:center; width:auto">
+           <b>
+             <div class="col-sm-4">Dates</div>
+             <div class="col-sm-4">Linear</div>
+             <div class="col-sm-4">RBF</div>
+          </b> 
+          </div>
+           
+		{% for x in range(0,valv[7]) %}
+          
+		  <div class="col-sm-4">{% print (valv[2][x]) %}</div>
+          
+		  <div class="col-sm-4">{% print ( '%.3f'%valv[0][x]) %}</div>
+         
+		  <div class="col-sm-4">{% print ('%.3f'%valv[1][x]) %}</div>
+        
+		  
+		{% endfor %}
+        
+           </div>
+       
+       </div>
+        
+        <div class="col-sm-6">
+        <div  style="text-align:center; color:blue; font-size:25px;">
+         Graph
+         </div>
+           <img src="/plot.png" alt="graph" />
+        </div>
+        
+        <div class="col-sm-3"> 
+          
+           <div style="text-align:center; color:blue; font-size:25px; margin-top:10px; margin-bottom:10px">
+           Stats:
+           </div>
+           <div class="row" style="font-size:16px">
+           <table class="table table-hover">
+           <tr>
+            <td>{% print ('Average error in Linear values: %d'%valv[3]) %}</td>
+           </tr>
+           <tr>
+            <td>{% print ('Average error in RBF values: %d'%valv[4]) %}</td>
+           </tr>
+           <tr>
+            <td>{% print ('Coefficient of Linear Regression: %.3f'%valv[5]) %}</td>
+           </tr>
+           <tr>
+            <td>{% print ('Linear Regression constant: %.3f'%valv[6]) %}</td>
+           </tr>
+           <tr>
+           <td>{% print('The relationship equation between dates and prices is: ') %}
+           <br />
+           {% print('price = %.3f * date + %.3f'%(valv[5], valv[6])) %}
+           </table>
+           </div>
+     
+        
+        </div>
+   </div> 
+    <hr>
+   <div class="row">
+   
+   <div class="col-sm-12 alert-info" style="padding:10px; text-align:center; margin-bottom:50px">
+  All the values provided above are mathematically calculated and are supposed to be accurate. But still there may be some wrong predictions. These prediction doesn't consider any physical factor and are dependent only on historical data. They should not be considered 100% accurate in any case.
+   
+   </div>
+   
+</div>
+
+{% endblock%}
+
+{% include 'footer.html' %}

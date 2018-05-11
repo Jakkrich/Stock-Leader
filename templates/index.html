@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+
+{%block body%}
+<div style="height:527px">
+
+    <div class="jumbotron text-center">
+     <h3 style="color:blue;">Stock Prediction based on machine learning</h3> 
+    </div>
+
+ <div style="font-size:20px; margin-bottom:50px; text-align:center;">Choose dataset and enter interval to predict prices.</div>
+<div class="col-sm-10">
+<div class="col-sm-3"></div>
+    <form action="/result" method = "POST" enctype="multipart/form-data">
+     <div class="col-sm-3 form-group">
+     <label for="file" class="control-label">Upload File:</label>
+     <input type="file" class="form-control" name="dataset" id="file" required />
+     </div>
+   
+     <div class="col-sm-3 form-group">
+     <label for="interval" class="control-label">Interval</label>
+     <input type="number" class="form-control" name="interval" id="inteval" placeholder="Enter no. of days" required />
+     </div>
+	 <br />
+     <div class="col-sm-2 form-group">
+     <input type="submit" id="submit" class="btn btn-default form-control" value="Submit" />
+	 </div>
+     </div>
+    </form>
+	</div>
+ 
+{% endblock%}
+
+{% include 'footer.html' %}
